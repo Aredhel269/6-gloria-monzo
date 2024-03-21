@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Roll from '../models/roll';
+import Roll from '../models/game';
 
 // Controlador per crear una nova tirada
 export const createRoll = async (req: Request, res: Response) => {

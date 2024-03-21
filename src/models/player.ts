@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/database';
-import Roll from './roll';
+import Game from './game';
 
 interface PlayerAttributes {
   id: number;
@@ -38,6 +38,6 @@ Player.init(
 );
 
 // associació amb el model de les tirades
-Player.hasMany(Roll, { foreignKey: 'playerId' });
+Player.hasMany(Game, { foreignKey: 'playerId' });
 
 export default Player;
