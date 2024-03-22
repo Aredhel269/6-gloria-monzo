@@ -1,15 +1,40 @@
-import express from 'express';
-import { getRanking, getLoser, getWinner } from '../controllers/rankingController.';
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../config/database';
 
-const router = express.Router();
+interface RankingAttributes {
+  id: number;
+  playerId: number;
+  successRate: number;
+}
 
-// Ruta per obtenir el rànquing de jugadors/es
-router.get('/', getRanking);
+class Ranking extends Model<RankingAttributes> implements RankingAttributes {
+  public id!: number;
+  public playerId!: number;
+  public successRate!: number;
+}
 
-// Ruta per obtenir el jugador/a amb el pitjor percentatge d'èxit
-router.get('/loser', getLoser);
+Ranking.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    playerId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: true
+    },
+    successRate: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    }
+  },
+  {
+    sequelize,
+    modelName: 'Ranking',
+    tableName: 'ranking'
+  }
+);
 
-// Ruta per obtenir el jugador/a amb el millor percentatge d'èxit
-router.get('/winner', getWinner);
-
-export default router;
+export default Ranking;

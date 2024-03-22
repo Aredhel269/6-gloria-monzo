@@ -8,7 +8,7 @@ export const createPlayer = async (req: Request, res: Response) => {
 
     // Si no s'ha proporcionat cap nom, assignem el valor "ANÒNIM"
     if (!name) {
-      name = "ANÒNIM";
+      name = "ANONYMOUS";
     }
 
     // Creem el jugador a la base de dades sense proporcionar l'id
@@ -20,10 +20,10 @@ export const createPlayer = async (req: Request, res: Response) => {
     // Retornem el jugador creat
     return res.status(201).json(player);
   } catch (error) {
-    console.error("Error en crear el jugador:", error);
+    console.error("Error creating player:", error);
     return res
       .status(500)
-      .json({ message: "Hi ha hagut un error en crear el jugador" });
+      .json({ message: "There was an error creating the player" });
   }
 };
 
@@ -38,7 +38,7 @@ export const updatePlayerName = async (req: Request, res: Response) => {
 
     // Comprovem si el jugador existeix
     if (!player) {
-      return res.status(404).json({ message: "Jugador no trobat" });
+      return res.status(404).json({ message: "Player not found" });
     }
 
     // Actualitzem el nom del jugador
@@ -48,12 +48,10 @@ export const updatePlayerName = async (req: Request, res: Response) => {
     // Retornem el jugador actualitzat
     return res.status(200).json(player);
   } catch (error) {
-    console.error("Error en actualitzar el nom del jugador:", error);
+    console.error("Error updating player name:", error);
     return res
       .status(500)
-      .json({
-        message: "Hi ha hagut un error en actualitzar el nom del jugador",
-      });
+      .json({ message: "There was an error updating the player's name" });
   }
 };
 
@@ -63,9 +61,9 @@ export const getAllPlayers = async (req: Request, res: Response) => {
     const players = await Player.findAll();
     return res.status(200).json(players);
   } catch (error) {
-    console.error("Error en obtenir els jugadors:", error);
+    console.error("Error getting players:", error);
     return res
       .status(500)
-      .json({ message: "Hi ha hagut un error en obtenir els jugadors" });
+      .json({ message: "There was an error getting the players" });
   }
 };

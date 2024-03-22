@@ -1,5 +1,3 @@
-// gameController.ts
-
 import { Request, Response } from 'express';
 import Game from '../models/game';
 
@@ -23,7 +21,7 @@ export const deleteGamesForPlayer = async (req: Request, res: Response) => {
     await Game.destroy({ where: { playerId } });
     return res.status(204).json({ message: 'Rolls successfully deleted for the player' });
   } catch (error) {
-    return res.status(500).json({ message: "Error deleting the rolls", error });
+    return res.status(500).json({ message: 'Error deleting the rolls', error });
   }
 };
 
@@ -39,6 +37,6 @@ export const getGamesForPlayer = async (req: Request, res: Response) => {
 
     return res.status(200).json(games);
   } catch (error) {
-    return res.status(500).json({ message: "Error getting the player's rolls", error });
+    return res.status(500).json({ message: 'Error getting the player\'s rolls', error });
   }
 };

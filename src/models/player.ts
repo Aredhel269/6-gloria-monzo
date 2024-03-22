@@ -6,12 +6,26 @@ interface PlayerAttributes {
   id: number;
   name: string;
   registrationDate: Date;
+  wins: number; // Nombre de partides guanyades
+  totalGames: number; // Nombre total de partides jugades
+  successRate: number; // Taxa d'èxit del jugador
 }
 
 class Player extends Model<PlayerAttributes> implements PlayerAttributes {
   public id!: number;
   public name!: string;
   public registrationDate!: Date;
+  public wins!: number;
+  public totalGames!: number;
+  public successRate!: number;
+
+  // Mètode per calcular el percentatge d'èxit del jugador
+  public calculateSuccessRate(): number {
+    if (this.totalGames === 0) {
+      return 0;
+    }
+    return (this.wins / this.totalGames) * 100;
+  }
 }
 
 Player.init(
@@ -28,6 +42,21 @@ Player.init(
     registrationDate: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
+    },
+    wins: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    totalGames: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    successRate: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      defaultValue: 0
     }
   },
   {
