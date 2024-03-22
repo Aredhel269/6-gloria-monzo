@@ -14,3 +14,10 @@ services:
       - "3306:3306"
     volumes:
       - ./data:/var/lib/mysql
+
+  app:
+    build: .
+    ports:
+      - "3000:3000" # Exposem el port 3000 per al servidor d'aplicacions
+    depends_on:
+      - mysql

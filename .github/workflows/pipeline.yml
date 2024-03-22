@@ -1,4 +1,4 @@
-name: CI
+name: CI for Sprint6DiceGame
 
 on:
   push:
@@ -6,20 +6,42 @@ on:
       - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Run tests
-      run: npm test
+      - name: Start Docker containers
+        run: |
+          cd server && docker-compose up -d
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Generate Prisma client
+        run: cd server && npx prisma generate --schema=./prisma/schema.prisma
+
+      - name: Migrate Prisma database
+        run: cd server && npx prisma migrate dev --name init
+
+      - name: Run tests
+        run: |
+          npm test
+
+      - name: Stop Docker containers
+        run: |
+          cd server && docker-compose down
