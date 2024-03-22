@@ -11,13 +11,14 @@ class Game extends Model {
   public dice2!: number;
   public isWin!: boolean;
 
-  // Aquest mètode s'utilitza per establir les relacions amb altres models
+  // Mètode per establir les relacions amb altres models
   public static associate() {
     Game.belongsTo(Player, { foreignKey: 'playerId' });
   }
 }
 
 Game.init(
+  // atributs de la taula de la base de dades games.
   {
     id: {
       type: DataTypes.INTEGER,
