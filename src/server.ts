@@ -1,7 +1,7 @@
 import express from "express";
-import playerRoutes from "./src/routes/playerRoutes";
-import gameRoutes from "./src/routes/gameRoutes";
-import rankingRoutes from "./src/routes/rankingRoutes";
+import playerRoutes from "./routes/playerRoutes";
+import gameRoutes from "./routes/gameRoutes";
+import rankingRoutes from "./routes/rankingRoutes";
 
 const app = express();
 
