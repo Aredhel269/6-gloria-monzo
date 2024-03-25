@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import Player from "../models/player";
 
-// Controlador per crear un nou jugador
-export const createPlayer = async (req: Request, res: Response) => {
+class PlayerController {
+// Controlador per crear un nou jugador POST
+public async createPlayer (req: Request, res: Response): Promise<void> {
   try {
     let { name } = req.body;
 
@@ -18,17 +19,17 @@ export const createPlayer = async (req: Request, res: Response) => {
     } as Player);
 
     // Retornem el jugador creat
-    return res.status(201).json(player);
+    res.status(201).json(player);
   } catch (error) {
     console.error("Error creating player:", error);
-    return res
+    res
       .status(500)
       .json({ message: "There was an error creating the player" });
   }
 };
 
-// Controlador per modificar el nom d'un jugador
-export const updatePlayerName = async (req: Request, res: Response) => {
+// Controlador per modificar el nom d'un jugador PUT
+public async updatePlayerName(req: Request, res: Response): Promise<void>  {
   try {
     const playerId = parseInt(req.params.id); // Obtenim l'identificador del jugador des de la ruta
     const { name } = req.body; // Obtenim el nou nom del jugador des del cos de la petició
@@ -38,7 +39,8 @@ export const updatePlayerName = async (req: Request, res: Response) => {
 
     // Comprovem si el jugador existeix
     if (!player) {
-      return res.status(404).json({ message: "Player not found" });
+      res.status(404).json({ message: "Player not found" });
+      return;
     }
 
     // Actualitzem el nom del jugador
@@ -46,24 +48,29 @@ export const updatePlayerName = async (req: Request, res: Response) => {
     await player.save(); // Guardem els canvis a la base de dades
 
     // Retornem el jugador actualitzat
-    return res.status(200).json(player);
+    res.status(200).json(player);
   } catch (error) {
     console.error("Error updating player name:", error);
-    return res
+    res
       .status(500)
       .json({ message: "There was an error updating the player's name" });
   }
 };
 
 // Controlador per obtenir tots els jugadors
-export const getAllPlayers = async (req: Request, res: Response) => {
+public async getAllPlayers(req: Request, res: Response): Promise<void> {
+  
+
   try {
     const players = await Player.findAll();
-    return res.status(200).json(players);
+    res.status(200).json(players);
   } catch (error) {
     console.error("Error getting players:", error);
-    return res
+    res
       .status(500)
       .json({ message: "There was an error getting the players" });
   }
+}
 };
+
+export default new PlayerController();

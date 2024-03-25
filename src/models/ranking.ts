@@ -1,39 +1,41 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/database';
 
+// Definició dels atributs que tindrà el model Ranking
 interface RankingAttributes {
-  id: number;
-  playerId: number;
-  successRate: number;
+  id: number; // Identificador únic de la classificació
+  playerId: number; // Identificador del jugador associat a la classificació
+  successRate: number; // Percentatge d'èxit del jugador
 }
 
 class Ranking extends Model<RankingAttributes> implements RankingAttributes {
-  public id!: number;
-  public playerId!: number;
-  public successRate!: number;
+  public id!: number; // Identificador únic de la classificació
+  public playerId!: number; // Identificador del jugador associat a la classificació
+  public successRate!: number; // Percentatge d'èxit del jugador
 }
 
+// Inicialització del model Ranking amb els atributs i opcions especificats
 Ranking.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     playerId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true
+      unique: true,
     },
     successRate: {
       type: DataTypes.FLOAT,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     sequelize,
     modelName: 'Ranking',
-    tableName: 'ranking'
+    tableName: 'ranking', // Nom de la taula a la base de dades
   }
 );
 

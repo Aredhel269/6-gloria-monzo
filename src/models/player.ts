@@ -2,15 +2,17 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../config/database';
 import Game from './game';
 
+// Interfície que defineix els atributs del jugador
 interface PlayerAttributes {
-  id: number;
-  name: string;
-  registrationDate: Date;
-  wins: number; // Nombre de partides guanyades
-  totalGames: number; // Nombre total de partides jugades
+  id: number; // Identificador únic del jugador
+  name: string; // Nom del jugador
+  registrationDate: Date; // Data de registre del jugador
+  wins: number; // Nombre de partides guanyades pel jugador
+  totalGames: number; // Nombre total de partides jugades pel jugador
   successRate: number; // Taxa d'èxit del jugador
 }
 
+// Classe que representa el model de jugador
 class Player extends Model<PlayerAttributes> implements PlayerAttributes {
   public id!: number;
   public name!: string;
@@ -28,6 +30,7 @@ class Player extends Model<PlayerAttributes> implements PlayerAttributes {
   }
 }
 
+// Inicialització del model Player amb els atributs i opcions
 Player.init(
   {
     id: {
@@ -66,7 +69,7 @@ Player.init(
   }
 );
 
-// associació amb el model de les tirades
+// Associació amb el model de les tirades (jocs)
 Player.hasMany(Game, { foreignKey: 'playerId' });
 
 export default Player;
