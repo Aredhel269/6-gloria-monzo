@@ -24,6 +24,9 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: Show directory content
+      run: ls -la
+
     - name: Start Docker containers
       run: |
         cd server && docker-compose up -d

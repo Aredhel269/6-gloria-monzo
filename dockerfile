@@ -2,7 +2,7 @@
 FROM node:latest
 
 # Estableix el directori de treball a /app
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copia el fitxer package.json i package-lock.json al directori de treball
 COPY package*.json ./
