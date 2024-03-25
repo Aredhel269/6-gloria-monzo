@@ -54,3 +54,8 @@ class RankingController {
 }
 
 export default new RankingController();
+
+
+
+
+
