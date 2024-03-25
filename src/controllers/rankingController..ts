@@ -3,7 +3,7 @@ import Ranking from "../models/ranking";
 import Player from "../models/player";
 
 class RankingController {
-  // Controlador per obtenir el rànquing de jugadors
+  // Controlador per obtenir el rànquing de jugadors GET
   public async getRanking(req: Request, res: Response): Promise<void> {
     try {
       const players = await Player.findAll();
@@ -30,7 +30,7 @@ class RankingController {
     }
   }
 
-  // Controlador per obtenir el jugador amb el pitjor percentatge d'èxit
+  // Controlador per obtenir el jugador amb el pitjor percentatge d'èxit GET
   public async getLoser(req: Request, res: Response): Promise<void> {
     try {
       const loser = await Ranking.findOne({ order: [["successRate", "ASC"]] });
@@ -40,7 +40,7 @@ class RankingController {
     }
   }
 
-  // Controlador per obtenir el jugador amb el millor percentatge d'èxit
+  // Controlador per obtenir el jugador amb el millor percentatge d'èxit GET
   public async getWinner(req: Request, res: Response): Promise<void> {
     try {
       const winner = await Ranking.findOne({

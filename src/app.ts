@@ -1,14 +1,20 @@
 import express from 'express';
-import { createPlayer, getAllPlayers } from './controllers/playerController';
+import playerRoutes from './routes/playerRoutes';
+import gameRoutes from './routes/gameRoutes';
+import rankingRoutes from './routes/rankingRoutes';
 
-// Crea un nou router Express
-export const router = express.Router();
+const app = express();
 
-// Definició de les rutes
-router.post('/players', createPlayer); // Ruta per crear un nou jugador
-router.get('/players', getAllPlayers); // Ruta per obtenir tots els jugadors
+// Middleware per analitzar el cos de les sol·licituds com a JSON
+app.use(express.json());
 
-// Pots afegir més rutes aquí per altres funcionalitats de l'aplicació
+// Utilitzem els routers per a cada recurs
+app.use('/players', playerRoutes); // Rutes del recurs jugador
+app.use('/games', gameRoutes); // Rutes del recurs joc
+app.use('/ranking', rankingRoutes); // Rutes del recurs classificació
 
-// Exporta el router perquè puguis utilitzar-lo en el teu fitxer server.ts
-export default router;
+// Inicia el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor escoltant al port ${PORT}`);
+});
