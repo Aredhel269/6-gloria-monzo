@@ -35,12 +35,7 @@ jobs:
       run: |
         npm install
 
-    - name: Generate Prisma client
-      run: cd server && npx prisma generate --schema=./prisma/schema.prisma
-
-    - name: Migrate Prisma database
-      run: cd server && npx prisma migrate dev --name init
-
+   
     #- name: Stop Docker containers
      # run: |
       #  cd server && docker-compose down
