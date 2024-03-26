@@ -19,12 +19,12 @@
     "url": "https://github.com/Aredhel269/Sprint6DiceGame/issues"
   },
   "dependencies": {
-    "express": "^4.19.1",
-    "jsonwebtoken": "^9.0.2"
+    "express": "4.19.1",
+    "jsonwebtoken": "9.0.2"
   },
   "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/jsonwebtoken": "^9.0.6",
-    "nodemon": "^2.0.15"
+    "@types/express": "4.17.21",
+    "@types/jest": "29.5.12",
+    "@types/jsonwebtoken": "9.0.6"
   }
 }

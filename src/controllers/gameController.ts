@@ -49,4 +49,4 @@ class GameController {
     }
   }
 }
-export default new GameController();
+export default  GameController;
