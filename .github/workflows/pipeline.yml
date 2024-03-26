@@ -27,9 +27,9 @@ jobs:
     - name: Show directory content
       run: ls -la
 
-    - name: Start Docker containers
-      run: |
-        cd server && docker-compose up -d
+    #- name: Start Docker containers
+      #run: |
+       # cd server && docker-compose up -d
 
     - name: Install dependencies
       run: |
@@ -41,6 +41,6 @@ jobs:
     - name: Migrate Prisma database
       run: cd server && npx prisma migrate dev --name init
 
-    - name: Stop Docker containers
-      run: |
-        cd server && docker-compose down
+    #- name: Stop Docker containers
+     # run: |
+      #  cd server && docker-compose down

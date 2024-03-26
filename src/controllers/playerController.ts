@@ -73,4 +73,4 @@ public async getAllPlayers(req: Request, res: Response): Promise<void> {
 }
 };
 
-export default  PlayerController;
+export default new PlayerController();
