@@ -1,3 +1,4 @@
 *.txt
 data
 node_modules
+*.webp

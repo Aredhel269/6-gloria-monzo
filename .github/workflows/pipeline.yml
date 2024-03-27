@@ -27,15 +27,14 @@ jobs:
     - name: Show directory content
       run: ls -la
 
-    #- name: Start Docker containers
-      #run: |
-       # cd server && docker-compose up -d
+    - name: Start Docker containers
+      run: |
+        cd server && docker-compose up -d
 
     - name: Install dependencies
       run: |
         npm install
 
-   
-    #- name: Stop Docker containers
-     # run: |
-      #  cd server && docker-compose down
+    - name: Stop Docker containers
+      run: |
+        cd server && docker-compose down
