@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Player from "../models/player";
 
-class PlayerController {
+export default class PlayerController {
 // Controlador per crear un nou jugador POST
 public async createPlayer (req: Request, res: Response): Promise<void> {
   try {
@@ -73,4 +73,3 @@ public async getAllPlayers(req: Request, res: Response): Promise<void> {
 }
 };
 
-export default new PlayerController();

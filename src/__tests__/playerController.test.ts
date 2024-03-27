@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import PlayerController from "../controllers/playerController";
+import PlayerController  from "../controllers/playerController";
 import Player from "../models/player";
 
 // Creem una funció mock per al req.body
@@ -64,3 +64,4 @@ describe("createPlayer function", () => {
     expect(res.json).toHaveBeenCalledWith({ message: "There was an error creating the player" });
   });
 });
+ 
