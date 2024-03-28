@@ -5,6 +5,10 @@ import rankingRoutes from "./routes/rankingRoutes";
 
 const app = express();
 
+app.get("./", (req, res)=> {
+  res.send('hola mon')
+})
+
 // Middleware per analitzar el cos de les sol·licituds com a JSON
 app.use(express.json());
 
