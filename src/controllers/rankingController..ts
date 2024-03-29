@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Ranking from "../models/ranking";
 import Player from "../models/player";
 
-class RankingController {
+export default class RankingController {
   // Controlador per obtenir el rànquing de jugadors GET
   public async getRanking(req: Request, res: Response): Promise<void> {
     try {
@@ -53,7 +53,6 @@ class RankingController {
   }
 }
 
-export default new RankingController();
 
 
 

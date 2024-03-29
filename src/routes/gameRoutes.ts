@@ -1,8 +1,9 @@
 import { Router } from "express";
-import gameController from "../controllers/gameController"; // Importem el controlador de jocs
+import GameController from '../controllers/gameController'; // Importem el controlador de jocs
 
 // Creem una nova instància del router d'Express
 const router = Router(); 
+const gameController = new GameController();
 // Definim les rutes per a les operacions relacionades amb el joc
 
 // Ruta per jugar una nova tirada de daus (POST)

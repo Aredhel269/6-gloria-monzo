@@ -3,7 +3,7 @@ import { sequelize } from '../config/database';
 import Game from './game';
 
 // Interfície que defineix els atributs del jugador
-interface PlayerAttributes {
+interface IPlayerAttributes {
   id: number; // Identificador únic del jugador
   name: string; // Nom del jugador
   registrationDate: Date; // Data de registre del jugador
@@ -13,7 +13,7 @@ interface PlayerAttributes {
 }
 
 // Classe que representa el model de jugador
-class Player extends Model<PlayerAttributes> implements PlayerAttributes {
+class Player extends Model<IPlayerAttributes> implements IPlayerAttributes {
   public id!: number;
   public name!: string;
   public registrationDate!: Date;

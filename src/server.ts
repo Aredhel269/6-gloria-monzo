@@ -3,6 +3,10 @@ import playerRoutes from "./routes/playerRoutes";
 import gameRoutes from "./routes/gameRoutes";
 import rankingRoutes from "./routes/rankingRoutes";
 
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 const app = express();
 
 app.get("./", (req, res)=> {

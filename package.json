@@ -20,6 +20,7 @@
     "url": "https://github.com/Aredhel269/Sprint6DiceGame/issues"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "4.19.1",
     "jsonwebtoken": "9.0.2",
     "mysql2": "3.9.3",

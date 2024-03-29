@@ -1,9 +1,9 @@
 import { Router } from "express";
-import gameController from "../controllers/gameController"; // Importem el controlador de jocs
-import rankingController from "../controllers/rankingController.";
+import RankingController from "../controllers/rankingController.";
 
 // Creem una nova instància del router d'Express
 const router = Router(); 
+const rankingController = new RankingController()
 // Definim les rutes per a les operacions relacionades amb el ranking
 
 // Ruta per obtenir el ranking de tots els jugadors 

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Game from "../models/game";
 
-class GameController {
+export default class GameController {
   // Controlador per crear una nova tirada per un jugador específic POST
   public async createGameForPlayer(req: Request, res: Response): Promise<void> {
     try {
@@ -49,4 +49,3 @@ class GameController {
     }
   }
 }
-export default  GameController;

@@ -3,16 +3,11 @@ version: "3"
 services:
   # Database
   db:
-    platform: linux/x86_64
     image: mysql:latest
     restart: always
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: dice_game_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_password
       MYSQL_ROOT_HOST: "%"
     ports:
       - "3306:3306"
@@ -26,18 +21,8 @@ services:
     ports:
       - "8090:80"
     environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-admin}
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 1234
 
-  #app:
-  # build: .
-  #ports:
-  # - "3000:3000" # Exposem el port 3000 per al servidor d'aplicacions
-  #depends_on:
-  # - mysql
 networks:
   mysql-phpmyadmin:
-
-volumes:
-  db_data:
- 
