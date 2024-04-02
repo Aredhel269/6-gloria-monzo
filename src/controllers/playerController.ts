@@ -72,4 +72,3 @@ public async getAllPlayers(req: Request, res: Response): Promise<void> {
   }
 }
 };
-

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   # Database
-  db:
+  dbdice:
     image: mysql:latest
     restart: always
     volumes:
@@ -13,23 +13,10 @@ services:
       MYSQL_USER: gloria
       MYSQL_PASSWORD: contrasena
       MYSQL_DATABASE: sprint6
-      environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-
     ports:
       - "3306:3306"
     networks:
-      - mysql-phpmyadmin
-
-  # phpmyadmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - "8090:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: 1234
+      - mysql-network
 
 networks:
-  mysql-phpmyadmin:
+  mysql-network:
