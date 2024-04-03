@@ -1,8 +1,8 @@
 # Utilitza una imatge de node com a base
 FROM node:latest
 
-# Estableix el directori de treball a /app
-WORKDIR /usr/src/app
+# Estableix el directori de treball a /server
+WORKDIR /usr/src/server
 
 # Copia el fitxer package.json i package-lock.json al directori de treball
 COPY package*.json ./

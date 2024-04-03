@@ -8,11 +8,11 @@ services:
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: '1234'
       MYSQL_ROOT_HOST: '%'
-      MYSQL_USER: gloria
-      MYSQL_PASSWORD: contrasena
-      MYSQL_DATABASE: sprint6
+      MYSQL_USER: 'gloria'
+      MYSQL_PASSWORD: 'contrasena'
+      MYSQL_DATABASE: 'sprint6'
     ports:
       - "3306:3306"
     networks:
