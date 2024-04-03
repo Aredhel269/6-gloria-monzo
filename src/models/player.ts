@@ -71,5 +71,7 @@ Player.init(
 
 // Associació amb el model de les tirades (jocs)
 Player.hasMany(Game, { foreignKey: 'playerId' });
+// El model definit és la pròpia classe en si mateixa
+console.log(Player === sequelize.models.Player); // true
 
 export default Player;

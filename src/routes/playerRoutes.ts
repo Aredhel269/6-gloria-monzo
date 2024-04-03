@@ -8,7 +8,7 @@ const playerController = new PlayerController();
 // Definim les rutes per a les operacions CRUD de jugadors
 
 // Ruta per crear un nou jugador (POST)
-router.post("/create", (req, res) => playerController.createPlayer(req, res));
+router.post("/create", playerController.createPlayer);
 // Ruta per actualitzar el nom d'un jugador existent (PUT)
 router.put("/:id", playerController.updatePlayerName);
 // Ruta per obtenir tots els jugadors (GET)

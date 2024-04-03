@@ -1,10 +1,10 @@
 *.txt
 data
 node_modules
-*.webp
-.env
+*.webp 
+.env 
 data
 data.old
 old.data
-dist
-.vscode
+dist 
+.vscode 
