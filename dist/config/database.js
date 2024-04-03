@@ -8,9 +8,12 @@ const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const dbPassword = process.env.DB_PASSWORD || '';
-exports.sequelize = new sequelize_1.Sequelize('dice_game_db', 'db_user', dbPassword, {
+const customLogger = (msg) => {
+    console.log('Sequelize log:', msg);
+};
+exports.sequelize = new sequelize_1.Sequelize('sprint6', 'root', dbPassword, {
     host: process.env.DB_HOST || 'localhost',
     dialect: 'mysql',
-    logging: false
+    logging: customLogger
 });
 //# sourceMappingURL=database.js.map

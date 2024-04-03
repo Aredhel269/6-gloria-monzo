@@ -7,7 +7,7 @@ const express_1 = require("express");
 const playerController_1 = __importDefault(require("../controllers/playerController"));
 const router = (0, express_1.Router)();
 const playerController = new playerController_1.default();
-router.post("/", playerController.createPlayer);
+router.post("/", (req, res) => playerController.createPlayer(req, res));
 router.put("/:id", playerController.updatePlayerName);
 router.get("/", playerController.getAllPlayers);
 exports.default = router;

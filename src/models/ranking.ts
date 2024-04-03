@@ -9,9 +9,9 @@ interface RankingAttributes {
 }
 
 class Ranking extends Model<RankingAttributes> implements RankingAttributes {
-  public id!: number; // Identificador únic de la classificació
-  public playerId!: number; // Identificador del jugador associat a la classificació
-  public successRate!: number; // Percentatge d'èxit del jugador
+  declare id: number; // Identificador únic de la classificació
+  declare playerId: number; // Identificador del jugador associat a la classificació
+  declare successRate: number; // Percentatge d'èxit del jugador
 }
 
 // Inicialització del model Ranking amb els atributs i opcions especificats

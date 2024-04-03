@@ -4,6 +4,7 @@ import Player from "../models/player";
 export default class PlayerController {
 // Controlador per crear un nou jugador POST
 public async createPlayer (req: Request, res: Response): Promise<void> {
+console.log("hola");
   try {
     let { name } = req.body;
 
@@ -57,7 +58,7 @@ public async updatePlayerName(req: Request, res: Response): Promise<void>  {
   }
 };
 
-// Controlador per obtenir tots els jugadors
+// Controlador per obtenir tots els jugadors GET
 public async getAllPlayers(req: Request, res: Response): Promise<void> {
   
 

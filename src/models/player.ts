@@ -14,12 +14,12 @@ interface IPlayerAttributes {
 
 // Classe que representa el model de jugador
 class Player extends Model<IPlayerAttributes> implements IPlayerAttributes {
-  public id!: number;
-  public name!: string;
-  public registrationDate!: Date;
-  public wins!: number;
-  public totalGames!: number;
-  public successRate!: number;
+  declare id: number;
+  declare name: string;
+  declare registrationDate: Date;
+  declare wins: number;
+  declare totalGames: number;
+  declare successRate: number;
 
   // Mètode per calcular el percentatge d'èxit del jugador
   public calculateSuccessRate(): number {

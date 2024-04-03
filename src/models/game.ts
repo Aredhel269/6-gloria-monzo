@@ -3,11 +3,11 @@ import { sequelize } from '../config/database';
 import Player from './player';
 
 class Game extends Model {
-  public id!: number; // Identificador únic de la tirada de dau
-  public playerId!: number; // Identificador del jugador associat a la tirada
-  public dice1!: number; // Valor del primer dau
-  public dice2!: number; // Valor del segon dau
-  public isWin!: boolean; // Indica si la tirada és guanyadora o no
+  declare id: number; // Identificador únic de la tirada de dau
+  declare playerId: number; // Identificador del jugador associat a la tirada
+  declare dice1: number; // Valor del primer dau
+  declare dice2: number; // Valor del segon dau
+  declare isWin: boolean; // Indica si la tirada és guanyadora o no
 
   // Mètode per establir les relacions amb altres models
   public static associate() {
