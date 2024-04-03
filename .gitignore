@@ -3,3 +3,6 @@ data
 node_modules
 *.webp
 .env
+data
+data.old
+old.data

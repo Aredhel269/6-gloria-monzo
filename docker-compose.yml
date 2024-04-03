@@ -1,22 +1,56 @@
+# version: "3"
+
+# services:
+#   # Database
+#   dbdice:
+#     image: mysql:latest
+#     restart: always
+#     volumes:
+#       - ./data:/var/lib/mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: 1234
+#       MYSQL_ROOT_HOST: '%'
+#       MYSQL_USER: gloria
+#       MYSQL_PASSWORD: contrasena
+#       MYSQL_DATABASE: sprint6
+#     ports:
+#       - "3306:3306"
+#     networks:
+#       - mysql-network
+
+# networks:
+#   mysql-network:
 version: "3"
 
 services:
   # Database
-  dbdice:
+  db:
     image: mysql:latest
     restart: always
     volumes:
       - ./data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: '1234'
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_ROOT_HOST: '%'
-      MYSQL_USER: 'gloria'
-      MYSQL_PASSWORD: 'contrasena'
-      MYSQL_DATABASE: 'sprint6'
+      MYSQL_USER: gloria
+      MYSQL_PASSWORD: contrasena
+      MYSQL_DATABASE: sprint6
     ports:
       - "3306:3306"
     networks:
-      - mysql-network
+      - mysql-phpmyadmin
+
+  # phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8090:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 1234
+    networks:
+      - mysql-phpmyadmin
 
 networks:
-  mysql-network:
+  mysql-phpmyadmin:
