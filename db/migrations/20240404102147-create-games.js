@@ -2,27 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Players', {
+    await queryInterface.createTable('Games', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      registrationDate: {
-        type: Sequelize.DATE
-      },
-      wins: {
+      playerId: {
         type: Sequelize.INTEGER
       },
-      totalGames: {
+      dice1: {
         type: Sequelize.INTEGER
       },
-      successRate: {
-        type: Sequelize.FLOAT
+      dice2: {
+        type: Sequelize.INTEGER
+      },
+      isWin: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Players');
+    await queryInterface.dropTable('Games');
   }
 };

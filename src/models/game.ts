@@ -42,8 +42,9 @@ Game.init(
     },
   },
   {
-    tableName: 'games', // Nom de la taula a la base de dades
     sequelize, // Connexió a la base de dades
+    modelName: 'Game',
+    tableName: 'games', // Nom de la taula a la base de dades
   }
 );
 
