@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
 // Carreguem les variables d'entorn des del fitxer .env
 dotenv.config();
