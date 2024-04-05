@@ -8,8 +8,8 @@
     "start": "node dist/models/index.js",
     "dev": "nodemon --exec ts-node-dev src/server.ts",
     "build": "tsc",
-    "prestart": "npm run build"
-  },
+    "prestart": "npm run build",
+    "test": "jest --watch --runInBand --detectOpenHandles"  },
   "keywords": [],
   "engines": {},
   "author": "Glòria Monzó",

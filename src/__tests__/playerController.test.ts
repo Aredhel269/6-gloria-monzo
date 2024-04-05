@@ -2,6 +2,20 @@ import { Request, Response } from "express";
 import PlayerController  from "../controllers/playerController";
 import Player from "../models/player";
 
+jest.mock("../models/player.ts");
+
+describe("PlayerController", () => {
+  let mockCreate: jest.Mock;
+
+  beforeEach(() => {
+    mockCreate = jest.fn();
+    (Player.create as jest.Mock) = mockCreate;
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
 // Creem una funció mock per al req.body
 const mockRequestBody = {
   body: {
@@ -9,17 +23,19 @@ const mockRequestBody = {
   }
 };
 
-// Creem una funció mock per al req.params
+/* // Creem una funció mock per al req.params
 const mockRequestParams = {
   params: {
     id: "1"
   }
 };
-
+ */
 // Definim mockResponse com un objecte buit inicialment
 const mockResponse: Partial<Response> = {};
 // Creem una instància de PlayerController per a les proves
 const playerController = new PlayerController();
+
+
 
 // Provem la funció createPlayer
 describe("createPlayer function", () => {
@@ -39,7 +55,7 @@ describe("createPlayer function", () => {
 
   it("should create a new player with provided name", async () => {
     const req = { ...mockRequestBody };
-    const res = { ...mockResponse };
+    const res = { status: jest.fn(), json: jest.fn() } as unknown as Response;
 
     await playerController.createPlayer(req as Request, res as Response);
 
@@ -53,7 +69,7 @@ describe("createPlayer function", () => {
 
   it("should handle errors during player creation", async () => {
     const req = { ...mockRequestBody };
-    const res = { ...mockResponse };
+    const res = { status: jest.fn(), json: jest.fn() } as unknown as Response;
 
     // Simulem un error durant la creació del jugador
     (Player.create as jest.Mock).mockRejectedValueOnce("Error");
@@ -64,4 +80,4 @@ describe("createPlayer function", () => {
     expect(res.json).toHaveBeenCalledWith({ message: "There was an error creating the player" });
   });
 });
- 
+})

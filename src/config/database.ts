@@ -13,7 +13,7 @@ const customLogger = (msg: unknown) => {
 };
 
 // Connectem a la base de dades amb els valors reals donats al docker-compose
-export const sequelize = new Sequelize('sprint6', 'root', dbPassword, {
+export const sequelize = new Sequelize(process.env.DB_NAME || 'sprint6', process.env.DB_USERNAME || 'root', dbPassword, {
   host: process.env.DB_HOST || 'localhost',
   dialect: 'mysql',
   logging: customLogger // Utilitzem la funció de registre personalitzada

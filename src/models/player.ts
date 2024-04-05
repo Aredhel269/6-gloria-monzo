@@ -75,3 +75,12 @@ Player.hasMany(Game, { foreignKey: 'playerId' });
 console.log(Player === sequelize.models.Player); // true
 
 export default Player;
+
+// Importa la llibreria dotenv
+import dotenv from 'dotenv';
+
+// Carrega les variables d'entorn des del fitxer .env
+dotenv.config();
+
+// Imprimeix una variable d'entorn per comprovar si s'ha llegit correctament
+console.log('Valor de DB_PASSWORD:', process.env.DB_PASSWORD);
