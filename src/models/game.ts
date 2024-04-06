@@ -49,3 +49,13 @@ Game.init(
 );
 
 export default Game;
+
+
+
+
+
+/* {
+  "dice1": 6,
+  "dice2": 4,
+  "isWin": false
+} */

@@ -3,7 +3,7 @@ import Game from "../models/game";
 
 export default class GameController {
   // Controlador per crear una nova tirada per un jugador específic POST
-  public async createGameForPlayer(req: Request, res: Response): Promise<void> {
+  public static async createGameForPlayer(req: Request, res: Response): Promise<void> {
     try {
       const playerId = parseInt(req.params.id);
       const { dice1, dice2, isWin } = req.body;
@@ -16,7 +16,7 @@ export default class GameController {
   }
 
   // Controlador per eliminar totes les tirades d'un jugador específic DELETE
-  public async deleteGamesForPlayer(
+  public static async deleteGamesForPlayer(
     req: Request,
     res: Response
   ): Promise<void> {
@@ -32,7 +32,7 @@ export default class GameController {
   }
 
   // Controlador per obtenir totes les tirades d'un jugador específic GET
-  public async getGamesForPlayer(req: Request, res: Response): Promise<void> {
+  public static async getGamesForPlayer(req: Request, res: Response): Promise<void> {
     try {
       const playerId = parseInt(req.params.id);
       const games = await Game.findAll({ where: { playerId } });
