@@ -6,7 +6,7 @@ export default class GameController {
   // Controlador per crear una nova tirada per un jugador específic POST
   public static async createGameForPlayer(req: Request, res: Response): Promise<void> {
     try {
-      const playerId = parseInt(req.params['id']);
+      const playerId = parseInt(req.params.id);
       console.log(playerId);
       const { dice1, dice2, isWin } = req.body;
 
@@ -26,7 +26,7 @@ export default class GameController {
     res: Response
   ): Promise<void> {
     try {
-      const playerId = parseInt(req.params['id']);
+      const playerId = parseInt(req.params.id);
       await Game.destroy({ where: { playerId } });
       res
         .status(204)
@@ -42,7 +42,7 @@ export default class GameController {
     res: Response
   ): Promise<void> {
     try {
-      const playerId = parseInt(req.params['id']);
+      const playerId = parseInt(req.params.id);
       const games = await Game.findAll({ where: { playerId } });
 
       if (games.length === 0) {
