@@ -1,6 +1,7 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../config/database';
-import Player from './player';
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../config/database";
+import {} from "sequelize";
+import Player from "./player";
 
 class Game extends Model {
   declare id: number; // Identificador únic de la tirada de dau
@@ -11,7 +12,7 @@ class Game extends Model {
 
   // Mètode per establir les relacions amb altres models
   public static associate() {
-    Game.belongsTo(Player, { foreignKey: 'playerId' });
+    Game.belongsTo(Player, { foreignKey: "playerId", targetKey: "id" });
   }
 }
 
@@ -43,19 +44,13 @@ Game.init(
   },
   {
     sequelize, // Connexió a la base de dades
-    modelName: 'Game',
-    tableName: 'games', // Nom de la taula a la base de dades
+    modelName: "Game",
+    tableName: "games", // Nom de la taula a la base de dades
   }
 );
-
+// El model definit és la pròpia classe en si mateixa
+console.log(
+  "El model definit Game és la pròpia classe en si mateixa",
+  Game === sequelize.models.Game
+); // true
 export default Game;
-
-
-
-
-
-/* {
-  "dice1": 6,
-  "dice2": 4,
-  "isWin": false
-} */

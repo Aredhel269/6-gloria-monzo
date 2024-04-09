@@ -43,7 +43,7 @@ describe("createPlayer function", () => {
     const req = { ...mockRequestBody };
     const res = { ...mockResponse } as Response; // Especifiquem el tipus com a Response
 
-    await playerController.createPlayer(req as Request, res);
+    await PlayerController.createPlayer(req as Request, res);
 
     expect(res.status).toHaveBeenCalledWith(201);
     expect(Player.create).toHaveBeenCalledWith({
@@ -57,7 +57,7 @@ describe("createPlayer function", () => {
     const req = { ...mockRequestBody };
     const res = { status: jest.fn(), json: jest.fn() } as unknown as Response;
 
-    await playerController.createPlayer(req as Request, res as Response);
+    await PlayerController.createPlayer(req as Request, res as Response);
 
     expect(res.status).toHaveBeenCalledWith(201);
     expect(Player.create).toHaveBeenCalledWith({
@@ -74,7 +74,7 @@ describe("createPlayer function", () => {
     // Simulem un error durant la creació del jugador
     (Player.create as jest.Mock).mockRejectedValueOnce("Error");
 
-    await playerController.createPlayer(req as Request, res as Response);
+    await PlayerController.createPlayer(req as Request, res as Response);
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ message: "There was an error creating the player" });

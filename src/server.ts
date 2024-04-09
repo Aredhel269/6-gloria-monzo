@@ -3,6 +3,7 @@ import playerRoutes from "./routes/playerRoutes";
 import gameRoutes from "./routes/gameRoutes";
 import rankingRoutes from "./routes/rankingRoutes";
 import dotenv from "dotenv";
+import { sequelize } from "./config/database";
 
 // Carrega les variables d'entorn des del fitxer .env
 dotenv.config();
@@ -18,15 +19,23 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Benvingut a la pàgina principal!");
 });
+/* 
 app.get("/", (req, res) => {
-  res.send('Hola món!');
-});
+  res.send("Hola món!");
+}); */
 
 // Utilitza els routers per a cada recurs
 app.use("/players", playerRoutes); // Rutes del recurs jugador
 app.use("/games", gameRoutes); // Rutes del recurs joc
 app.use("/ranking", rankingRoutes); // Rutes del recurs classificació
 
-app.listen(PORT, () => {
-  console.log(`Servidor escoltant al port ${PORT}`);
-});
+async function main() {
+  try {
+    await sequelize.sync({ alter: true}); // Sincronitza les taules amb les dades de la base de dades
+    app.listen(PORT, () => {
+      console.log(`Servidor escoltant al port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Error al sincronitzar les taules:", error);
+  }
+}

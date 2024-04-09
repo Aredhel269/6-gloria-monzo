@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   Player.init({
     name: DataTypes.STRING,
     registrationDate: DataTypes.DATE,
-    wins: DataTypes.NUMBER,
-    totalGames: DataTypes.NUMBER,
-    successRate: DataTypes.NUMBER
+    wins: DataTypes.INTEGER,
+    totalGames: DataTypes.INTEGER,
+    successRate: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'Player',
