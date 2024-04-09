@@ -29,13 +29,6 @@ app.use("/players", playerRoutes); // Rutes del recurs jugador
 app.use("/games", gameRoutes); // Rutes del recurs joc
 app.use("/ranking", rankingRoutes); // Rutes del recurs classificació
 
-async function main() {
-  try {
-    await sequelize.sync({ alter: true}); // Sincronitza les taules amb les dades de la base de dades
-    app.listen(PORT, () => {
-      console.log(`Servidor escoltant al port ${PORT}`);
-    });
-  } catch (error) {
-    console.error("Error al sincronitzar les taules:", error);
-  }
-}
+app.listen(PORT, () => {
+  console.log(`Servidor escoltant al port ${PORT}`);
+});
