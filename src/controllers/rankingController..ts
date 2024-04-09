@@ -1,18 +1,25 @@
 import { Request, Response } from "express";
-import Ranking from "../models/ranking";
 import Player from "../models/player";
 
 export default class RankingController {
-  // Controlador per obtenir el rànquing de jugadors GET
   public static async getRanking(req: Request, res: Response): Promise<void> {
     try {
       const players = await Player.findAll();
 
       // Calcula el percentatge d'èxit per cada jugador
       const rankedPlayers = players.map((player) => {
-        const successRate = player.calculateSuccessRate(); // Implementar aquest mètode al model de Player
+        const successRate = player.calculateSuccessRate();
         return { playerId: player.id, successRate };
       });
+
+      export const getRanking = async (_req: Request, res: Response) => {
+        const players= await Player.findAll({ order: [ [ 'winPercentage', 'DESC' ] ] });
+      
+        const averageWinPercentage = await getAverageWinPercentage();
+      
+        const result = { players, averageWinPercentage };
+      
+        return res.status(200).send(result);
 
       // Ordena els jugadors per percentatge d'èxit
       rankedPlayers.sort((a, b) => b.successRate - a.successRate);
@@ -22,7 +29,8 @@ export default class RankingController {
         (acc, player) => acc + player.successRate,
         0
       );
-      const averageSuccessRate = totalSuccessRate / rankedPlayers.length;
+      const averageSuccessRate =
+        totalSuccessRate / rankedPlayers.length || 0;
 
       res.status(200).json({ rankedPlayers, averageSuccessRate });
     } catch (error) {
@@ -30,20 +38,20 @@ export default class RankingController {
     }
   }
 
-  // Controlador per obtenir el jugador amb el pitjor percentatge d'èxit GET
   public static async getLoser(req: Request, res: Response): Promise<void> {
     try {
-      const loser = await Ranking.findOne({ order: [["successRate", "ASC"]] });
+      const loser = await Player.findOne({
+        order: [["successRate", "ASC"]],
+      });
       res.status(200).json(loser);
     } catch (error) {
       res.status(500).json({ message: "Error getting the loser", error });
     }
   }
 
-  // Controlador per obtenir el jugador amb el millor percentatge d'èxit GET
   public static async getWinner(req: Request, res: Response): Promise<void> {
     try {
-      const winner = await Ranking.findOne({
+      const winner = await Player.findOne({
         order: [["successRate", "DESC"]],
       });
       res.status(200).json(winner);
@@ -52,9 +60,3 @@ export default class RankingController {
     }
   }
 }
-
-
-
-
-
-

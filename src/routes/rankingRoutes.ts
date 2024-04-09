@@ -6,7 +6,7 @@ const rankingRouter = Router();
 // Definim les rutes per a les operacions relacionades amb el ranking
 
 // Ruta per obtenir el ranking de tots els jugadors
-rankingRouter.get("/", RankingController.getRanking);
+rankingRouter.get("/all", RankingController.getRanking);
 
 // Ruta per obtenir el jugador amb pitjor percentatge
 rankingRouter.get("/loser", RankingController.getLoser);

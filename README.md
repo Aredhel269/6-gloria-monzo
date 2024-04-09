@@ -11,7 +11,7 @@ The Dice Game Project is a web application that allows users to play a dice game
 - Node.js
 - Express.js
 - Sequelize (ORM)
-- PostgreSQL (Database)
+- MySQL (Database)
 - TypeScript
 - Jest (Testing)
 
@@ -27,7 +27,7 @@ The Dice Game Project is a web application that allows users to play a dice game
 1. Clone the repository: `git clone https://github.com/your-username/dice-game-project.git`
 2. Navigate to the project directory: `cd dice-game-project`
 3. Install dependencies: `npm install`
-4. Set up the PostgreSQL database and configure the connection in `config/database.ts`
+4. Set up the MySQL database and configure the connection in `config/database.ts`
 5. Run the database migrations: `npm run migrate`
 6. Start the server: `npm start`
 
