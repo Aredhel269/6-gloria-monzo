@@ -9,7 +9,9 @@
     "dev": "nodemon --exec ts-node-dev src/server.ts",
     "build": "tsc",
     "prestart": "npm run build",
-    "test": "jest --watch --runInBand --detectOpenHandles"
+    "test": "jest --watch --runInBand --detectOpenHandles",
+    "lint": "eslint .",
+    "lint-fix": "eslint --fix ."
   },
   "keywords": [],
   "engines": {},

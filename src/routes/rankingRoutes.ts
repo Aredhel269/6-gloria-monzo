@@ -1,5 +1,5 @@
 import { Router } from "express";
-import RankingController from "../controllers/rankingController.";
+import RankingController from "../controllers/rankingController";
 
 // Creem una nova instància del router d'Express
 const rankingRouter = Router();

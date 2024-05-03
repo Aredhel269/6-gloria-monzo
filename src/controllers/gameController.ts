@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import Game from "../models/game";
 
-console.log("hola");
 export default class GameController {
   // Controlador per crear una nova tirada per un jugador específic POST
   public static async createGameForPlayer(
@@ -11,10 +10,21 @@ export default class GameController {
     try {
       const playerId = parseInt(req.params.id);
       console.log("PLAYERID", playerId);
-      const { dice1, dice2, isWin } = req.body;
 
-      console.log("IN GAME CONTROLLER TRY");
+      // Calcular els valors dels daus
+      const dice1 = Math.floor(Math.random() * 6) + 1;
+      const dice2 = Math.floor(Math.random() * 6) + 1;
 
+      // Determinar si el jugador ha guanyat o no
+      const total = dice1 + dice2;
+      const isWin = total === 7;
+
+      console.log("Dice 1:", dice1);
+      console.log("Dice 2:", dice2);
+      console.log("Total:", total);
+      console.log("Win?", isWin);
+
+      // Guardar la tirada en la base de dades
       const game = await Game.create({ playerId, dice1, dice2, isWin });
       console.log("game", game);
 
@@ -24,6 +34,7 @@ export default class GameController {
       res.status(500).json({ message: "There was an error creating the roll" });
     }
   }
+
   // Controlador per obtenir totes les tirades d'un jugador específic GET
   public static async getGamesForPlayer(
     req: Request,
@@ -31,6 +42,11 @@ export default class GameController {
   ): Promise<void> {
     try {
       const playerId = parseInt(req.params.id);
+      if (isNaN(playerId)) {
+        res.status(400).json({ message: "Invalid player ID" });
+        return;
+      }
+
       const games = await Game.findAll({ where: { playerId } });
 
       if (games.length === 0) {
@@ -45,6 +61,7 @@ export default class GameController {
         .json({ message: "Error getting the player's rolls", error });
     }
   }
+
   // Controlador per eliminar totes les tirades d'un jugador específic DELETE
   public static async deleteGamesForPlayer(
     req: Request,
@@ -52,6 +69,11 @@ export default class GameController {
   ): Promise<void> {
     try {
       const playerId = parseInt(req.params.id);
+      if (isNaN(playerId)) {
+        res.status(400).json({ message: "Invalid player ID" });
+        return;
+      }
+
       await Game.destroy({ where: { playerId } });
       res
         .status(204)
@@ -61,18 +83,3 @@ export default class GameController {
     }
   }
 }
-/*
-const deleteUserGames = async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const existingUser = await userRepository.retrieveById(userId);
-    if (!existingUser) throw new NotCorrectParamsError('No player found');
-    await gameRepository.deleteUserGames(userId);
-    // await Games.destroy({ where: { UserId: playerId } });
-    return res.status(200).json({ message: `All games for ${existingUser.username} were deleted` });
-  } catch (error) {
-    if (error instanceof NotCorrectParamsError) return res.status(401).json({ message: error.message });
-    return res.status(500).json({ message: 'Error playing game.', error });
-  }
-};
-*/
