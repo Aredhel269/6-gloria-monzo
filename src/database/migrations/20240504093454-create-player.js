@@ -18,6 +18,9 @@ module.exports = {
       wins: {
         type: Sequelize.INTEGER
       },
+      losses: {
+        type: Sequelize.INTEGER
+      },
       totalGames: {
         type: Sequelize.INTEGER
       },
