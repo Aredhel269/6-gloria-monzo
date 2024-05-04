@@ -80,8 +80,15 @@ export default class PlayerController {
         player.losses += 1;
       }
 
-      const totalGames = player.wins + player.losses;
-      player.succesRate = (player.wins / totalGames) * 100;
+      // Actualitzar el total de partides
+      player.totalGames = player.wins + player.losses;
+
+      // Calcular la taxa d'èxit
+      if (player.totalGames !== 0) {
+        player.successRate = (player.wins / player.totalGames) * 100;
+      } else {
+        player.successRate = 0;
+      }
 
       await player.save();
     } catch (error) {
@@ -89,4 +96,3 @@ export default class PlayerController {
     }
   }
 }
-

@@ -1,0 +1,163 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "DiceGameAPI",
+    "collectionId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+    "dateExported": "2024-05-04T12:16:27.876Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "6edd2e3d-6ad0-4652-9f9a-f1395b690816",
+            "name": "Players",
+            "containerId": "",
+            "created": "2024-04-06T10:53:43.140Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "46fa2be1-37d2-40b8-ae24-fafef5bc74bd",
+            "name": "Games",
+            "containerId": "",
+            "created": "2024-04-06T11:03:14.322Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a61d2240-c8d8-45c3-8416-45b0710eaa72",
+            "name": "Ranking",
+            "containerId": "",
+            "created": "2024-04-06T11:03:30.242Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "32e7e871-8b9a-4f89-9d89-1658b3d587f0",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "6edd2e3d-6ad0-4652-9f9a-f1395b690816",
+            "name": "Create Player",
+            "url": "http://localhost:3000/players/newplayer",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-06T10:14:33.977Z",
+            "modified": "2024-05-04T10:10:52.122Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"name\":\"angus\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "ea49ca72-68a8-437c-82a4-57a7890e4869",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "6edd2e3d-6ad0-4652-9f9a-f1395b690816",
+            "name": "Get All Players",
+            "url": "http://localhost:3000/players/allPlayers",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-06T10:46:33.137Z",
+            "modified": "2024-04-08T08:47:14.715Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"name\":\"\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9cec5e2c-96ec-4a83-bf4f-68352345763d",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "6edd2e3d-6ad0-4652-9f9a-f1395b690816",
+            "name": "Update Name Player",
+            "url": "http://localhost:3000/players/13",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-04-06T10:44:04.902Z",
+            "modified": "2024-05-04T10:11:35.288Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Violet\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "79e7a236-0a2a-4ad1-85a9-bff406985344",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "46fa2be1-37d2-40b8-ae24-fafef5bc74bd",
+            "name": "Create Game for Player",
+            "url": "http://localhost:3000/games/play/4",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-04-06T11:04:13.897Z",
+            "modified": "2024-05-04T11:29:31.805Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"dice1\":\"3\",\n  \"dice2\":\"4\",\n  \"isWin\":true\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7356b575-3a9b-41d4-a70b-9316982162a5",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "46fa2be1-37d2-40b8-ae24-fafef5bc74bd",
+            "name": "Get Games for Player",
+            "url": "http://localhost:3000/games/rounds/12",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-04-06T11:20:07.254Z",
+            "modified": "2024-05-04T11:22:16.111Z",
+            "headers": []
+        },
+        {
+            "_id": "18c73203-0dd8-4d64-b7bb-d8559d9b9110",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "46fa2be1-37d2-40b8-ae24-fafef5bc74bd",
+            "name": "Delete Rolls for Player",
+            "url": "http://localhost:3000/games/remove/15",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-04-09T15:20:50.001Z",
+            "modified": "2024-05-04T11:08:00.813Z",
+            "headers": []
+        },
+        {
+            "_id": "ee48e252-d460-49e0-b417-47a5e88af16c",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "a61d2240-c8d8-45c3-8416-45b0710eaa72",
+            "name": "Ranking All",
+            "url": "http://localhost:3000/ranking/all",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-04-09T15:24:02.148Z",
+            "modified": "2024-05-03T09:51:08.654Z",
+            "headers": []
+        },
+        {
+            "_id": "70b4695f-d104-4873-bb64-d4cf7227572b",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "a61d2240-c8d8-45c3-8416-45b0710eaa72",
+            "name": "Ranking Loser",
+            "url": "http://localhost:3000/ranking/loser",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-05-03T09:51:41.723Z",
+            "modified": "2024-05-03T09:51:49.200Z",
+            "headers": []
+        },
+        {
+            "_id": "5f5ad14a-eea2-4e48-a678-af39237f76a4",
+            "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
+            "containerId": "a61d2240-c8d8-45c3-8416-45b0710eaa72",
+            "name": "Ranking Loser Copy",
+            "url": "http://localhost:3000/ranking/winner",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-05-04T11:57:38.120Z",
+            "modified": "2024-05-04T11:58:04.396Z",
+            "headers": []
+        }
+    ],
+    "ref": "i-2MoEACq11l8nP7KBXPbl9WAZPj80lNUyFsVGCx1uW-4vY1ujB41GZ5TH99s5JIUnwu5bS1miGiaSjUwWPqBA"
+}

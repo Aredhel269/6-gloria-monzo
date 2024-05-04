@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import Game from "../models/game";
+import Player from "../models/player";
+import PlayerController from "./playerController";
 
 export default class GameController {
   // Controlador per crear una nova tirada per un jugador específic POST
@@ -27,6 +29,9 @@ export default class GameController {
       // Guardar la tirada en la base de dades
       const game = await Game.create({ playerId, dice1, dice2, isWin });
       console.log("game", game);
+
+      // Actualitzar les dades del jugador després de crear un joc
+      await PlayerController.updatePlayerSuccessRate(playerId, isWin);
 
       res.status(201).json(game);
     } catch (error) {
@@ -74,7 +79,18 @@ export default class GameController {
         return;
       }
 
+      // Eliminar les jugades del jugador
       await Game.destroy({ where: { playerId } });
+
+      // Actualitzar el total de partides del jugador
+      const player = await Player.findByPk(playerId);
+      if (!player) {
+        res.status(404).json({ message: "Player not found" });
+        return;
+      }
+      player.totalGames = 0;
+      await player.save();
+
       res
         .status(204)
         .json({ message: "Rolls successfully deleted for the player" });
@@ -82,4 +98,6 @@ export default class GameController {
       res.status(500).json({ message: "Error deleting the rolls", error });
     }
   }
+
 }
+
