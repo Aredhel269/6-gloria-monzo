@@ -32,3 +32,6 @@ app.use("/ranking", rankingRoutes); // Rutes del recurs classificació
 app.listen(PORT, () => {
   console.log(`Servidor escoltant al port ${PORT}`);
 });
+
+
+export { app };
