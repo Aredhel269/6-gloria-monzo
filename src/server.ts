@@ -3,7 +3,7 @@ import playerRoutes from "./routes/playerRoutes";
 import gameRoutes from "./routes/gameRoutes";
 import rankingRoutes from "./routes/rankingRoutes";
 import dotenv from "dotenv";
-import { sequelize } from "./config/database";
+//import { sequelize } from "./config/database";
 
 // Carrega les variables d'entorn des del fitxer .env
 dotenv.config();
