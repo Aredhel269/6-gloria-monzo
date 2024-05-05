@@ -24,20 +24,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Show directory content
-        run: ls -la
-
-      - name: Checkout repository (again)
-        uses: actions/checkout@v3
-
-      - name: Start Docker containers
-        run: |
-          cd ./src/server && docker-compose up -d
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: user/app:latest
 
       - name: Install dependencies
         run: |
           npm install
 
-      - name: Stop Docker containers
-        run: |
-          cd server && docker-compose down
+
+
+
+
