@@ -29,7 +29,7 @@ jobs:
 
     - name: Start Docker containers
       run: |
-        cd server && docker-compose up -d
+        cd ./src/server && docker-compose up -d
 
     - name: Install dependencies
       run: |
