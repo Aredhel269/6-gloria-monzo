@@ -48,26 +48,14 @@
     ],
     "ext": "ts"
   },
-  "jest": {
-    "testMatch": [
-      "**/__tests__/**/*.test.ts"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testPathIgnorePatterns": [
-      "./node_modules/",
-      "./dist/"
-    ]
-  },
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ],
   "optionalDependencies": {
     "win-node-env": "^0.6.1"
   }
