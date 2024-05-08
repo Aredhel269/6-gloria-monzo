@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "DiceGameAPI",
     "collectionId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
-    "dateExported": "2024-05-04T12:16:27.876Z",
+    "dateExported": "2024-05-08T09:01:44.773Z",
     "version": "1.2",
     "folders": [
         {
@@ -70,14 +70,14 @@
             "containerId": "6edd2e3d-6ad0-4652-9f9a-f1395b690816",
             "name": "Update Name Player",
             "url": "http://localhost:3000/players/13",
-            "method": "PUT",
+            "method": "PATCH",
             "sortNum": 30000,
             "created": "2024-04-06T10:44:04.902Z",
-            "modified": "2024-05-04T10:11:35.288Z",
+            "modified": "2024-05-08T08:58:26.386Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\":\"Violet\"\n}",
+                "raw": "{\n  \"name\":\"Oletu\"\n}",
                 "form": []
             }
         },
@@ -86,11 +86,11 @@
             "colId": "bfc5ff89-b915-448c-9ea4-65759500a41d",
             "containerId": "46fa2be1-37d2-40b8-ae24-fafef5bc74bd",
             "name": "Create Game for Player",
-            "url": "http://localhost:3000/games/play/4",
+            "url": "http://localhost:3000/games/play/10",
             "method": "POST",
             "sortNum": 50000,
             "created": "2024-04-06T11:04:13.897Z",
-            "modified": "2024-05-04T11:29:31.805Z",
+            "modified": "2024-05-07T16:07:31.212Z",
             "headers": [],
             "body": {
                 "type": "json",
@@ -159,5 +159,5 @@
             "headers": []
         }
     ],
-    "ref": "i-2MoEACq11l8nP7KBXPbl9WAZPj80lNUyFsVGCx1uW-4vY1ujB41GZ5TH99s5JIUnwu5bS1miGiaSjUwWPqBA"
+    "ref": "i-2MoEACq11l8nP7KBXPbqiWwrD8QhCQFnEdt658Yf7c0Ur7pgJxF1Bf63X70bYIxw2U6ix-_tu6UwsP0C1EAA"
 }

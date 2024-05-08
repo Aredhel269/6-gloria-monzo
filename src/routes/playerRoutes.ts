@@ -8,8 +8,8 @@ const playerRouter = Router();
 
 // Ruta per crear un nou jugador (POST)
 playerRouter.post("/newplayer", PlayerController.createPlayer);
-// Ruta per actualitzar el nom d'un jugador existent (PUT)
-playerRouter.put("/:id", PlayerController.updatePlayerName);
+// Ruta per actualitzar el nom d'un jugador existent (PATCH)
+playerRouter.patch("/:id", PlayerController.updatePlayerName);
 // Ruta per obtenir tots els jugadors (GET)
 playerRouter.get("/allplayers", PlayerController.getAllPlayers);
 
