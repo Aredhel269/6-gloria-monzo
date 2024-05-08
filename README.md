@@ -97,6 +97,59 @@ The project follows the main design patterns.
 - Docker instances for the databases.
 - Documentation of endpoints and examples using ThunderClient.
 
+## Structure
+
+```
+Sprint6DiceGame
+├─ 📁.github
+│  └─ 📁workflows
+│     └─ 📄pipeline.yml
+├─ 📁src
+│  ├─ 📁config
+│  │  └─ 📄database.ts
+│  ├─ 📁controllers
+│  │  ├─ 📄gameController.ts
+│  │  ├─ 📄playerController.ts
+│  │  └─ 📄rankingController.ts
+│  ├─ 📁database
+│  │  ├─ 📁config
+│  │  │  └─ 📄config.json
+│  │  ├─ 📁migrations
+│  │  │  ├─ 📄20240504093454-create-player.js
+│  │  │  ├─ 📄20240504094126-create-ranking.js
+│  │  │  └─ 📄20240504094311-create-game.js
+│  │  ├─ 📁models
+│  │  │  ├─ 📄game.js
+│  │  │  ├─ 📄index.js
+│  │  │  ├─ 📄player.js
+│  │  │  └─ 📄ranking.js
+│  │  └─ 📁seeders
+│  ├─ 📁models
+│  │  ├─ 📄game.ts
+│  │  ├─ 📄player.ts
+│  │  └─ 📄ranking.ts
+│  ├─ 📁routes
+│  │  ├─ 📄gameRoutes.ts
+│  │  ├─ 📄playerRoutes.ts
+│  │  └─ 📄rankingRoutes.ts
+│  ├─ 📄authMiddleware.ts
+│  └─ 📄server.ts
+├─ 📄.dockerignore
+├─ 📄.env
+├─ 📄.eslintrc.yaml
+├─ 📄.gitignore
+├─ 📄.sequelizerc
+├─ 📄docker-compose.yml
+├─ 📄dockerfile
+├─ 📄image.png
+├─ 📄package-lock.json
+├─ 📄package.json
+├─ 📄README.md
+├─ 📄thunder-collection_DiceGameAPI.json
+├─ 📄treeStructure
+└─ 📄tsconfig.json
+```
+
 ## Contributing
 
 Contributions to the Dice Game Project are welcome! If you'd like to contribute, please follow these steps:
@@ -110,4 +163,3 @@ Contributions to the Dice Game Project are welcome! If you'd like to contribute,
 ## License
 
 This project is licensed under the MIT License.
-```

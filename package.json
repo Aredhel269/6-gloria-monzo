@@ -34,12 +34,12 @@
   "devDependencies": {
     "@types/express": "4.17.21",
     "@types/jsonwebtoken": "9.0.6",
-    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
     "nodemon": "^3.1.0",
     "rimraf": "^5.0.5",
     "sequelize-cli": "^6.6.2",
-    "typescript": "5.4.5",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "5.4.5"
   },
   "nodemon": {
     "exec": "ts-node src/server.ts",
@@ -48,6 +48,10 @@
     ],
     "ext": "ts"
   },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/**/*.test.ts"
+    ],
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -55,5 +59,16 @@
     "jsx",
     "json",
     "node"
-  ]
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      "./node_modules/",
+      "./dist/"
+    ]
+  },
+  "optionalDependencies": {
+    "win-node-env": "^0.6.1"
+  }
 }
