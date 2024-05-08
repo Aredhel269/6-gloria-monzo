@@ -1,4 +1,3 @@
-```markdown
 # Dice Game
 
 Welcome to the Dice Game! This project was developed during Sprint 6 of the Backend Bootcamp on Node.js at ItAcademy Barcelona.
